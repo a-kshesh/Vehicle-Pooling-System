@@ -1,0 +1,100 @@
+﻿@model VehicalPoolingSystem.Models.ViewModels.SignInViewModel; 
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="~/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/vendors.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+</head>
+
+<body class="bg-white">
+    <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+            <!-- begin pre-loader -->
+            <div class="loader">
+                <div class="h-100 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <img src="~/img/loader/loader.svg" alt="loader">
+                    </div>
+                </div>
+            </div>
+            <!-- end pre-loader -->
+            <!--start login contant-->
+            <div class="app-contant">
+                <div class="bg-white">
+                    <div class="container-fluid p-0">
+                        <div class="row no-gutters">
+                            <div class="col-sm-6 col-lg-5 col-xxl-3  align-self-center order-2 order-sm-1">
+                                <div class="d-flex align-items-center h-100-vh">
+                                    <div class="register p-5">
+                                        <h1 class="mb-2">Vehicle Pooling</h1>                                        
+                                        <p>Welcome, Please create your account.</p>
+                                        <form method="post" asp-action="SignIn" clas="mt-3 mt-sm-5">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="Email" class="control-label">Email*</label>
+                                                        <input asp-for="Email" type="text" class="form-control" placeholder="Email" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="Password" class="control-label">Password*</label>
+                                                        <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mt-3">
+                                                    <button type="submit" class="btn btn-primary text-uppercase">Sign In</button>
+                                                </div>
+                                                <div class="col-12 mt-3">
+                                                    <p style="color:red;font-size:16px;">
+                                                        @if (ViewBag.ErrorMessage != null)
+                                                        {
+                                                            @ViewBag.ErrorMessage
+                                                        }
+                                                    </p>
+                                                </div>
+                                                <div class="col-12  mt-3">
+                                                    <p>Don't have an account ?<a asp-action="RegisterUser" asp-controller="Users"> Sign Up</a></p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xxl-9 col-lg-7 bg-gradient o-hidden order-1 order-sm-2">
+                                <div class="row align-items-center h-100">
+                                    <div class="col-7 mx-auto ">
+                                        <img class="img-fluid" src="~/img/bg/login.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+    <!-- plugins -->
+    <script src="~/js/vendors.js"></script>
+
+    <!-- custom app -->
+    <script src="~/js/app.js"></script>
+</body>
+
+</html>
+

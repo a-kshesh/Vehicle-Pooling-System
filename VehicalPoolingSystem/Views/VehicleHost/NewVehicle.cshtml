@@ -1,0 +1,278 @@
+﻿@model VehicalPoolingSystem.Models.ViewModels.NewVehicleViewModel;
+@{
+    ViewData["Title"] = "NewVehicle";
+    Layout = "_VehicleHostLayout";
+}
+
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <div class="d-block d-sm-flex flex-nowrap align-items-center">
+            <div class="page-title mb-2 mb-sm-0">
+                <h1>New Vehicles</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-statistics">
+            <div class="card-body">
+                <form asp-action="NewVehicle" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Owner's Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.OwnerName" class="col-lg-2 col-form-label">Owner's Name</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Vehicles.OwnerName" type="text" class="form-control" placeholder="Owner's Name">
+                                            <span asp-validation-for="Vehicles.OwnerName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Vehicle's Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.Type" class="col-lg-2 col-form-label">Type</label>
+                                        <div class="col-lg-3">
+                                            <select class="form-control" asp-for="Vehicles.Type">
+                                                <option value="Micro">Micro</option>
+                                                <option value="Compact">Compact</option>
+                                                <option value="Sedan">Sedan</option>
+                                                <option value="Luxury Sedan">Luxury Sedan</option>
+                                                <option value="SUV">SUV</option>
+                                                <option value="MUV">MUV</option>
+                                            </select>
+                                            <span asp-validation-for="Vehicles.Type" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.Company" class="col-lg-2 col-form-label">Company</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.Company" type="text" class="form-control" placeholder="Vehicle Company">
+                                            <span asp-validation-for="Vehicles.Company" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.Model" class="col-lg-2 col-form-label">Model</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.Model" type="text" class="form-control" placeholder="Vehicle Model">
+                                            <span asp-validation-for="Vehicles.Model" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.ManufacturingYear" class="col-lg-2 col-form-label">Manufacturing Year</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.ManufacturingYear" type="text" class="form-control" placeholder="Vehicle Manufacturing Year">
+                                            <span asp-validation-for="Vehicles.ManufacturingYear" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.VehicleTransmission" class="col-lg-2 col-form-label">Transmission</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="Vehicles.VehicleTransmission" class="form-control" placeholder="Vehicle Transmission">
+                                                <option value="Auto">Auto</option>
+                                                <option value="Manual">Manual</option>
+                                            </select>
+                                            <span asp-validation-for="Vehicles.VehicleTransmission" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.VehicleIgnition" class="col-lg-2 col-form-label">Ignition</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="Vehicles.VehicleIgnition" class="form-control" placeholder="Vehicle Transmission">
+                                                <option value="Gas">Gas</option>
+                                                <option value="Electric">Electric</option>
+                                            </select>
+                                            <span asp-validation-for="Vehicles.VehicleIgnition" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.VehicleDoors" class="col-lg-2 col-form-label">Doors</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="Vehicles.VehicleDoors" class="form-control" placeholder="No. Of Vehicle Doors">
+                                                <option value="4">4</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                            <span asp-validation-for="Vehicles.VehicleDoors" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.VehicleSeats" class="col-lg-2 col-form-label">Seats</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="Vehicles.VehicleSeats" class="form-control" placeholder="No. Of Vehicle Seats">
+                                                <option value="4">4</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                            <span asp-validation-for="Vehicles.VehicleSeats" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Legal Documents</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.LicenseNumber" class="col-lg-2 col-form-label">License Number</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Vehicles.LicenseNumber" type="text" class="form-control" placeholder="License Number" />
+                                            <span asp-validation-for="Vehicles.LicenseNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.InsuranceNumber" class="col-lg-2 col-form-label">Insurance Number</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Vehicles.InsuranceNumber" type="text" class="form-control" placeholder="Insurance Number" />
+                                            <span asp-validation-for="Vehicles.InsuranceNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="OwnershipDoc" class="col-lg-2 col-form-label">Ownership Paper</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="OwnershipDoc" type="file" class="form-control-file" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="InsuranceDoc" class="col-lg-2 col-form-label">Insurance Paper</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="InsuranceDoc" type="file" class="form-control-file" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Vehicle Images</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="Image1" class="col-lg-2 col-form-label">Picture 1</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Image1" type="file" class="form-control-file" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Image2" class="col-lg-2 col-form-label">Picture 2</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Image2" type="file" class="form-control-file" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Image3" class="col-lg-2 col-form-label">Picture 3</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Image3" type="file" class="form-control-file" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Booking Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.PickupAddress" class="col-lg-2 col-form-label">Pickup Address</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Vehicles.PickupAddress" type="text" class="form-control" placeholder="Pickup Address For Vehicle">
+                                            <span asp-validation-for="Vehicles.PickupAddress" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.PickupCity" class="col-lg-2 col-form-label">Pickup City</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.PickupCity" type="text" class="form-control" placeholder="City">
+                                            <span asp-validation-for="Vehicles.PickupCity" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.PickupState" class="col-lg-2 col-form-label">State</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.PickupState" type="text" class="form-control" placeholder="State">
+                                            <span asp-validation-for="Vehicles.PickupState" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.PickupZipCode" class="col-lg-2 col-form-label">Zipcode</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.PickupZipCode" type="text" class="form-control" placeholder="Zipcode">
+                                            <span asp-validation-for="Vehicles.PickupZipCode" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.CostPerDay" class="col-lg-2 col-form-label">Cost Per Day</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.CostPerDay" type="text" class="form-control" placeholder="Cost Per Day">
+                                            <span asp-validation-for="Vehicles.CostPerDay" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.DistanceIncluded" class="col-lg-2 col-form-label">Distance Included</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.DistanceIncluded" type="text" class="form-control" placeholder="Distance Included">
+                                            <span asp-validation-for="Vehicles.DistanceIncluded" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Vehicles.AdditionalDistanceFee" class="col-lg-2 col-form-label">Additional Distance Fee</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="Vehicles.AdditionalDistanceFee" type="text" class="form-control" placeholder="Additional Distance Fee">
+                                            <span asp-validation-for="Vehicles.AdditionalDistanceFee" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-9">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

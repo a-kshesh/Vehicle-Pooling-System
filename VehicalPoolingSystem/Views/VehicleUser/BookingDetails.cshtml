@@ -1,0 +1,120 @@
+﻿@model VehicalPoolingSystem.Models.Bookings
+@{
+    ViewData["Title"] = "BookingDetails";
+    Layout = "_VehicleHostLayout";
+}
+
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <div class="d-block d-sm-flex flex-nowrap align-items-center">
+            <div class="page-title mb-2 mb-sm-0">
+                <h1>Booking Details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card card-statistics">
+            <div class="card-body">
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">The Car</label>
+                    <div class="col-lg-6">
+                        <h2>@Model.Vehicle.Company @Model.Vehicle.Model @Model.Vehicle.ManufacturingYear </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">Trip Start</label>
+                    <div class="col-lg-9">
+                        @Model.TripStart
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">Trip End</label>
+                    <div class="col-lg-9">
+                        @Model.TripEnd
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">Cost Per Day</label>
+                    <div class="col-lg-9">
+                        $@Model.CostPerDay/day
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">Distance Included</label>
+                    <div class="col-lg-9">
+                        @Model.DistanceIncluded
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">Additional Distance Fee</label>
+                    <div class="col-lg-9">
+                        @Model.AdditionalDistanceFee.ToString("0.00")
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">Additional Distance</label>
+                    <div class="col-lg-9">
+                        @Model.AdditionalDistance.ToString("0.00")
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-lg-2 col-form-label">Total Charges</label>
+                    <div class="col-lg-9">
+                        @Model.TotalCharges.ToString("0.00")
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-9">
+                        @if (@Model.Status == "Booked")
+                        {
+                            <a asp-action="BookingActivity" asp-route-bookingId="@Model.BookingId" class="btn btn-primary">
+                                Pickup Vehicle
+                            </a>
+                        }
+                        @if (@Model.Status == "PickedUp")
+                        {
+                            <button data-toggle="modal" data-target="#returnModal" class="btn btn-primary">
+                                Return Vehicle
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="returnModal" tabindex="-1" role="dialog" aria-labelledby="returnModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Additional Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="ReturnVhicle" method="post">
+                    <input type="hidden" name="bookingId" value="@Model.BookingId"/>
+                    <div class="form-group">
+                        <label>Distance Included</label>
+                        <label class="form-control">@Model.DistanceIncluded</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Additional Distance Charges</label>
+                        <label class="form-control">$@Model.AdditionalDistanceFee.ToString("0.00")</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="additionalDistance">Additional Distance Used</label>
+                        <input type="text" class="form-control" name="additionalDistance">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

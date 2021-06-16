@@ -1,0 +1,26 @@
+﻿@model IEnumerable<VehicalPoolingSystem.Models.Vehicles>
+@{
+    ViewData["Title"] = "Vehicles";
+    Layout = "_VehicleHostLayout";
+}
+
+<div class="row media-contant">
+    @foreach (Vehicles v in Model)
+    {
+        <div class="col-12 col-lg-4">
+            <a asp-action="VehicleDetails" asp-route-vehicleId="@v.VehicleId">
+                <div class="card card-statistics">
+                    <img class="card-img-top" src="~/uploads/@v.Image1Name" alt="Car image">
+                    <div class="card-body">
+                        <h4 class="card-title">@v.Company @v.Model @v.ManufacturingYear</h4>
+                        <p>5.0 <i class="fa fa-star"></i><span> (108 trips)</span></p>
+                        <hr>
+                        <p class="text-right"> <b>$@v.CostPerDay/day</b></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+

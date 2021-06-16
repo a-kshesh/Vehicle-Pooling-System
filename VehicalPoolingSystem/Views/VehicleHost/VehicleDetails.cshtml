@@ -1,0 +1,288 @@
+﻿@model VehicalPoolingSystem.Models.Vehicles;
+@{
+    ViewData["Title"] = "VehicleDetails";
+    Layout = "_VehicleHostLayout";
+}
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <div class="d-block d-sm-flex flex-nowrap align-items-center">
+            <div class="page-title mb-2 mb-sm-0">
+                <h1>Vehicle Details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-statistics">
+            <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Owner's Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Owner's Name</label>
+                                        <div class="col-lg-6">
+                                            @Model.OwnerName
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Vehicle's Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Type</label>
+                                        <div class="col-lg-3">
+                                            @Model.Type
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Company</label>
+                                        <div class="col-lg-4">
+                                            @Model.Company
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Model</label>
+                                        <div class="col-lg-4">
+                                            @Model.Model
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Manufacturing Year</label>
+                                        <div class="col-lg-4">
+                                            @Model.ManufacturingYear
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Transmission</label>
+                                        <div class="col-lg-3">
+                                            @Model.VehicleTransmission
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Ignition</label>
+                                        <div class="col-lg-3">
+                                            @Model.VehicleIgnition
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Doors</label>
+                                        <div class="col-lg-3">
+                                            @Model.VehicleDoors
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Seats</label>
+                                        <div class="col-lg-3">
+                                            @Model.VehicleSeats
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Legal Documents</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">License Number</label>
+                                        <div class="col-lg-6">
+                                            @Model.LicenseNumber
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Insurance Number</label>
+                                        <div class="col-lg-6">
+                                            @Model.InsuranceNumber
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Ownership Paper</label>
+                                        <div class="col-lg-6">
+                                          @if(@Model.OwnershipDocFileName != null){
+                                                @Model.OwnershipDocFileName.Split("_")[1]
+                                           }
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Insurance Paper</label>
+                                        <div class="col-lg-6">
+                                            @if(@Model.InsuranceDocFileName != null){
+                                                @Model.InsuranceDocFileName.Split("_")[1]
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Vehicle Images</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Picture 2</label>
+                                        <div class="col-lg-9">
+                                            @if (@Model.Image1Name != null)
+                                            {
+                                                <div class="row magnific-wrapper">
+                                                    <div class="col-xl-3 col-md-6 col-sm-6">
+                                                        <div class="card card-statistics text-center">
+                                                            <div class="card-body p-0">
+                                                                <div class="portfolio-item">
+                                                                    <img src="~/uploads/@Model.Image1Name" alt="gallery-img">
+                                                                    <a class="popup portfolio-img view" href="~/uploads/@Model.Image1Name"><i class="fa fa-arrows-alt"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Picture 2</label>
+                                        <div class="col-lg-9">
+                                            @if (@Model.Image2Name != null)
+                                            {
+                                                <div class="row magnific-wrapper">
+                                                    <div class="col-xl-3 col-md-6 col-sm-6">
+                                                        <div class="card card-statistics text-center">
+                                                            <div class="card-body p-0">
+                                                                <div class="portfolio-item">
+                                                                    <img src="~/uploads/@Model.Image2Name" alt="gallery-img">
+                                                                    <a class="popup portfolio-img view" href="~/uploads/@Model.Image2Name"><i class="fa fa-arrows-alt"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Picture 3</label>
+                                        <div class="col-lg-9">
+                                            @if (@Model.Image3Name != null)
+                                            {
+                                                <div class="row magnific-wrapper">
+                                                    <div class="col-xl-3 col-md-6 col-sm-6">
+                                                        <div class="card card-statistics text-center">
+                                                            <div class="card-body p-0">
+                                                                <div class="portfolio-item">
+                                                                    <img src="~/uploads/@Model.Image3Name" alt="gallery-img">
+                                                                    <a class="popup portfolio-img view" href="~/uploads/@Model.Image2Name"><i class="fa fa-arrows-alt"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Booking Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Pickup Address</label>
+                                        <div class="col-lg-6">
+                                            @Model.PickupAddress
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">City</label>
+                                        <div class="col-lg-6">
+                                            @Model.PickupCity
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">State</label>
+                                        <div class="col-lg-6">
+                                            @Model.PickupState
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Zipcode</label>
+                                        <div class="col-lg-6">
+                                            @Model.PickupZipCode
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Cost Per Day</label>
+                                        <div class="col-lg-6">
+                                            @Model.CostPerDay
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Distance Included</label>
+                                        <div class="col-lg-6">
+                                            @Model.DistanceIncluded
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Additional Distance Fee</label>
+                                        <div class="col-lg-6">
+                                            @Model.AdditionalDistanceFee
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-9">
+                            <a  asp-action="VehicleEdit" asp-route-vehicleId="@Model.VehicleId" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

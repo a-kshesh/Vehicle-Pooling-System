@@ -1,0 +1,49 @@
+﻿@model VehicalPoolingSystem.Models.ViewModels.VehiclesViewModel;
+@{
+    ViewData["Title"] = "Vehicles";
+    Layout = "_VehicleHostLayout";
+}
+
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <div class="d-block d-sm-flex flex-nowrap align-items-center">
+            <div class="page-title mb-2 mb-sm-0">
+                <h1>Host Vehicles</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row media-contant">
+    <div class="col-12 col-lg-4">
+        <a asp-action="NewVehicle">
+            <div class="card card-statistics media-contant">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="mt-0">New Vehicle</h4>
+                            You can add new vehicle by clicking this link.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    @foreach (Vehicles v in Model.Vehicles)
+    {
+        <div class="col-12 col-lg-4">
+            <a asp-action="VehicleDetails" asp-route-vehicleId="@v.VehicleId">
+                <div class="card card-statistics media-contant">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="mt-0">@v.Company @v.Model</h4>
+                                You can add new vehicle by clicking this link.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>

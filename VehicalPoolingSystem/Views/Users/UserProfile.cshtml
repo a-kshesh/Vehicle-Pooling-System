@@ -1,0 +1,88 @@
+﻿@model VehicalPoolingSystem.Models.Users
+@{
+    ViewData["Title"] = "RegisterUser";
+    Layout = "_VehicleHostLayout";
+    
+}
+
+    <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+            <!-- begin pre-loader -->
+            <div class="loader">
+                <div class="h-100 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <img src="~/img/loader/loader.svg" alt="loader">
+                    </div>
+                </div>
+            </div>
+            <!-- end pre-loader -->
+            <!--start login contant-->
+            <div class="app-contant">
+                <div class="bg-white">
+                    <div class="container-fluid p-0">
+                        <div class="row no-gutters">
+                            <div class=" center order-2 order-sm-1">
+                                <div class="d-flex align-items-center h-100-vh">
+                                    <div class="register p-5 ">
+                                        <h1 class="mb-2">Vehicle Pooling</h1>
+                                        <form asp-action="UserEdit" method="post" class="mt-2 mt-sm-5 ">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label asp-for="FirstName" class="control-label">First Name*</label>
+                                                        <p>@Model.FirstName</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label asp-for="LastName" class="control-label">Last Name*</label>
+                                                        <p>@Model.LastName</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="Email" class="control-label">Email*</label>
+                                                        <p>@Model.Email</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label asp-for="Type" class="control-label">Type</label>
+                                                        <p>@Model.Type</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label asp-for="Phone" class="control-label">Phone</label>
+                                                        <p>@Model.Phone</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="Address" class="control-label">Address*</label>
+                                                        <p>@Model.Address</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mt-3">
+                                                    <a asp-action="UserEdit" class="btn btn-primary">Edit</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+    <!-- plugins -->
+    
+
+

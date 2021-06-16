@@ -1,0 +1,95 @@
+﻿@model VehicalPoolingSystem.Models.Users
+@{
+    ViewData["Title"] = "RegisterUser";
+    Layout = "_VehicleHostLayout";
+
+}
+
+<!-- begin app -->
+<div class="app">
+    <!-- begin app-wrap -->
+    <div class="app-wrap">
+        <!-- begin pre-loader -->
+        <div class="loader">
+            <div class="h-100 d-flex justify-content-center">
+                <div class="align-self-center">
+                    <img src="~/img/loader/loader.svg" alt="loader">
+                </div>
+            </div>
+        </div>
+        <!-- end pre-loader -->
+        <!--start login contant-->
+        <div class="app-contant">
+            <div class="bg-white">
+                <div class="container-fluid p-0">
+                    <div class="row no-gutters">
+                        <div class=" center order-2 order-sm-1">
+                            <div class="d-flex align-items-center h-100-vh">
+                                <div class="register p-5 ">
+                                    <h1 class="mb-2">Vehicle Pooling</h1>
+                                    <form asp-action="UserEdit" method="post" class="mt-2 mt-sm-5 ">
+                                        <input type="hidden" asp-for="@Model.UserId" />
+                                        <input type="hidden" asp-for="@Model.Password" />
+                                        <input type="hidden" asp-for="@Model.Type" />
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label asp-for="FirstName" class="control-label">First Name*</label>
+                                                    <input asp-for="FirstName" type="text" class="form-control" placeholder="First Name" />
+                                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label asp-for="LastName" class="control-label">Last Name*</label>
+                                                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" />
+                                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label asp-for="Email" class="control-label">Email*</label>
+                                                    <input asp-for="Email" type="email" class="form-control" placeholder="Email" />
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label asp-for="Type" class="control-label">Type</label>
+                                                    <label asp-for="Type" type="text" class="form-control">@Model.Type</label>
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                    <span asp-validation-for="Type" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label asp-for="Phone" class="control-label">Phone</label>
+                                                    <input asp-for="Phone" type="text" class="form-control" placeholder="Phone" />
+                                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label asp-for="Address" class="control-label">Address*</label>
+                                                    <input asp-for="Address" type="text" class="form-control" placeholder="Address" />
+                                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <button type="submit" class="btn btn-primary text-uppercase">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end app-wrap -->
+</div>
+<!-- end app -->
+<!-- plugins -->

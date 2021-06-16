@@ -1,0 +1,340 @@
+﻿@model VehicalPoolingSystem.Models.Vehicles
+@{
+    ViewData["Title"] = "VehicleEdit";
+    Layout = "_VehicleHostLayout";
+}
+
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <div class="d-block d-sm-flex flex-nowrap align-items-center">
+            <div class="page-title mb-2 mb-sm-0">
+                <h1>Vehicle Details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-statistics">
+            <div class="card-body">
+                <form asp-action="VehicleEdit" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="@Model.VehicleId" />
+                    <input type="hidden" asp-for="@Model.UserId" />
+                    <input type="hidden" asp-for="@Model.Available" />
+                    <input type="hidden" asp-for="@Model.InsuranceDocFileName" />
+                    <input type="hidden" asp-for="@Model.OwnershipDocFileName" />
+                    <input type="hidden" asp-for="@Model.Image1Name" />
+                    <input type="hidden" asp-for="@Model.Image2Name" />
+                    <input type="hidden" asp-for="@Model.Image3Name" />
+                    <input type="hidden" asp-for="@Model.CreatedOn" />
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Owner's Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.OwnerName" class="col-lg-2 col-form-label">Owner's Name</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="@Model.OwnerName" value="@Model.OwnerName" type="text" class="form-control" placeholder="Owner's Name">
+                                            <span asp-validation-for="@Model.OwnerName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Vehicle's Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.Type" class="col-lg-2 col-form-label">Type</label>
+                                        <div class="col-lg-3">
+                                            <select class="form-control" asp-for="@Model.Type">
+                                                <option selected="@(Model.Type =="Micro"?"selected":null )" value="Micro">Micro</option>
+                                                <option selected="@(Model.Type =="Compact"?"selected":null )" value="Compact">Compact</option>
+                                                <option selected="@(Model.Type =="Sedan"?"selected":null )" value="Sedan">Sedan</option>
+                                                <option selected="@(Model.Type =="Luxury Sedan"?"selected":null )" value="Luxury Sedan">Luxury Sedan</option>
+                                                <option selected="@(Model.Type =="SUV"?"selected":null )" value="SUV">SUV</option>
+                                                <option selected="@(Model.Type =="MUV"?"selected":null )" value="MUV">MUV</option>
+                                            </select>
+                                            <span asp-validation-for="@Model.Type" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.Company" class="col-lg-2 col-form-label">Company</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="@Model.Company" value="@Model.Company" type="text" class="form-control" placeholder="Vehicle Company">
+                                            <span asp-validation-for="@Model.Company" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.Model" class="col-lg-2 col-form-label">Model</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="@Model.Model" value="@Model.Model" type="text" class="form-control" placeholder="Vehicle Model">
+                                            <span asp-validation-for="@Model.Model" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.ManufacturingYear" class="col-lg-2 col-form-label">Manufacturing Year</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="@Model.ManufacturingYear" value="@Model.ManufacturingYear" type="text" class="form-control" placeholder="Vehicle Manufacturing Year">
+                                            <span asp-validation-for="@Model.ManufacturingYear" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.VehicleTransmission" class="col-lg-2 col-form-label">Transmission</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="@Model.VehicleTransmission" class="form-control" placeholder="Vehicle Transmission">
+                                                <option selected="@(Model.VehicleTransmission =="Auto"?"selected":null )" value="Auto">Auto</option>
+                                                <option selected="@(Model.VehicleTransmission =="Manual"?"selected":null )" value="Manual">Manual</option>
+                                            </select>
+                                            <span asp-validation-for="@Model.VehicleTransmission" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.VehicleIgnition" class="col-lg-2 col-form-label">Ignition</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="@Model.VehicleIgnition" class="form-control" placeholder="Vehicle Ignition">
+                                                <option selected="@(Model.VehicleIgnition =="Gas"?"selected":null )" value="Gas">Gas</option>
+                                                <option selected="@(Model.VehicleIgnition =="Electric"?"selected":null )" value="Electric">Electric</option>
+                                            </select>
+                                            <span asp-validation-for="@Model.VehicleTransmission" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.VehicleDoors" class="col-lg-2 col-form-label">Doors</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="@Model.VehicleDoors" class="form-control" placeholder="No. Of Vehicle Doors">
+                                                <option selected="@(Model.VehicleDoors.ToString() =="4"?"selected":null )" value="4">4</option>
+                                                <option selected="@(Model.VehicleDoors.ToString() =="2"?"selected":null )" value="2">2</option>
+                                            </select>
+                                            <span asp-validation-for="@Model.VehicleDoors" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.VehicleSeats" class="col-lg-2 col-form-label">Seats</label>
+                                        <div class="col-lg-3">
+                                            <select asp-for="@Model.VehicleSeats" class="form-control" placeholder="No. Of Vehicle Seats">
+                                                <option selected="@(Model.VehicleSeats.ToString() =="4"?"selected":null )" value="4">4</option>
+                                                <option selected="@(Model.VehicleSeats.ToString() =="2"?"selected":null )" value="2">2</option>
+                                            </select>
+                                            <span asp-validation-for="@Model.VehicleSeats" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Legal Documents</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.LicenseNumber" class="col-lg-2 col-form-label">License Number</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="@Model.LicenseNumber" value="@Model.LicenseNumber" type="text" class="form-control" placeholder="License Number" />
+                                            <span asp-validation-for="@Model.LicenseNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.InsuranceNumber" class="col-lg-2 col-form-label">Insurance Number</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="@Model.InsuranceNumber" value="@Model.InsuranceNumber" type="text" class="form-control" placeholder="Insurance Number" />
+                                            <span asp-validation-for="@Model.InsuranceNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Ownership Paper</label>
+                                        <div class="col-lg-6">
+                                            @if (@Model.OwnershipDocFileName != null)
+                                            {
+                                                @Model.OwnershipDocFileName.Split("_")[1]
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Insurance Paper</label>
+                                        <div class="col-lg-6">
+                                            @if (@Model.InsuranceDocFileName != null)
+                                            {
+                                                @Model.InsuranceDocFileName.Split("_")[1]
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Vehicle Images</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Picture 2</label>
+                                        <div class="col-lg-9">
+                                            @if (@Model.Image1Name != null)
+                                            {
+                                                <div class="row magnific-wrapper">
+                                                    <div class="col-xl-3 col-md-6 col-sm-6">
+                                                        <div class="card card-statistics text-center">
+                                                            <div class="card-body p-0">
+                                                                <div class="portfolio-item">
+                                                                    <img src="~/uploads/@Model.Image1Name" alt="gallery-img">
+                                                                    <a class="popup portfolio-img view" href="~/uploads/@Model.Image1Name"><i class="fa fa-arrows-alt"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Picture 2</label>
+                                        <div class="col-lg-9">
+                                            @if (@Model.Image2Name != null)
+                                            {
+                                                <div class="row magnific-wrapper">
+                                                    <div class="col-xl-3 col-md-6 col-sm-6">
+                                                        <div class="card card-statistics text-center">
+                                                            <div class="card-body p-0">
+                                                                <div class="portfolio-item">
+                                                                    <img src="~/uploads/@Model.Image2Name" alt="gallery-img">
+                                                                    <a class="popup portfolio-img view" href="~/uploads/@Model.Image2Name"><i class="fa fa-arrows-alt"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label">Picture 3</label>
+                                        <div class="col-lg-9">
+                                            @if (@Model.Image3Name != null)
+                                            {
+                                                <div class="row magnific-wrapper">
+                                                    <div class="col-xl-3 col-md-6 col-sm-6">
+                                                        <div class="card card-statistics text-center">
+                                                            <div class="card-body p-0">
+                                                                <div class="portfolio-item">
+                                                                    <img src="~/uploads/@Model.Image3Name" alt="gallery-img">
+                                                                    <a class="popup portfolio-img view" href="~/uploads/@Model.Image2Name"><i class="fa fa-arrows-alt"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="card card-statistics">
+                                <div class="card-header">
+                                    <div class="card-heading">
+                                        <h5 class="card-title">Booking Information</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.PickupAddress" class="col-lg-2 col-form-label">Pickup Address</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="@Model.PickupAddress" value="@Model.PickupAddress" type="text" class="form-control" placeholder="Pickup Address For Vehicle">
+                                            <span asp-validation-for="@Model.PickupAddress" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.PickupCity" class="col-lg-2 col-form-label">City</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="@Model.PickupCity" value="@Model.PickupCity" type="text" class="form-control" placeholder="City">
+                                            <span asp-validation-for="@Model.PickupCity" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.PickupState" class="col-lg-2 col-form-label">State</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="@Model.PickupState" value="@Model.PickupState" type="text" class="form-control" placeholder="State">
+                                            <span asp-validation-for="@Model.PickupState" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.PickupZipCode" class="col-lg-2 col-form-label">Zipcode</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="@Model.PickupZipCode" value="@Model.PickupZipCode" type="text" class="form-control" placeholder="Zipcode">
+                                            <span asp-validation-for="@Model.PickupZipCode" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.CostPerDay" class="col-lg-2 col-form-label">Cost Per Day</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="@Model.CostPerDay" type="text" value="@Model.CostPerDay" class="form-control" placeholder="Cost Per Day">
+                                            <span asp-validation-for="@Model.CostPerDay" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.DistanceIncluded" class="col-lg-2 col-form-label">Distance Included</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="@Model.DistanceIncluded" type="text" value="@Model.DistanceIncluded" class="form-control" placeholder="Distance Included">
+                                            <span asp-validation-for="@Model.DistanceIncluded" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="@Model.AdditionalDistanceFee" class="col-lg-2 col-form-label">Additional Distance Fee</label>
+                                        <div class="col-lg-4">
+                                            <input asp-for="@Model.AdditionalDistanceFee" type="text" value="@Model.AdditionalDistanceFee" class="form-control" placeholder="Additional Distance Fee">
+                                            <span asp-validation-for="@Model.AdditionalDistanceFee" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                        <div class="col-lg-2">
+                            <a asp-action="VehicleDetails" asp-route-vehicleId="@Model.VehicleId" class="btn btn-secondary">Back</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

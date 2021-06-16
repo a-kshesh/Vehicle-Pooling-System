@@ -1,0 +1,45 @@
+﻿@model IEnumerable<VehicalPoolingSystem.Models.Bookings>
+@{
+    ViewData["Title"] = "Bookings";
+    Layout = "_VehicleHostLayout";
+}
+
+<div class="row media-contant">
+    @foreach (Bookings b in Model)
+    {
+        <div class="col-12 col-lg-4">
+            <a asp-action="BookingDetails" asp-route-bookingId="@b.BookingId">
+                <div class="card card-statistics">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="col-lg-8 card-title">
+                                @b.Vehicle.Company @b.Vehicle.Model @b.Vehicle.ManufacturingYear
+                            </h4>
+                            <div class="col-lg-4 pr-1 text-right @b.Status">
+                                <b>@b.Status</b>
+                            </div>
+                        </div>
+                        <p>From: @b.TripStart</p>
+                        <p>To: @b.TripEnd</p>
+                        <p>Pickup|Return: @b.PickupAddress</p>
+                        @if (@b.Status == "Returned" || @b.Status == "Completed")
+                        {
+                            <p>Total Charge: @b.TotalCharges.ToString("0.00")</p>
+                        }
+                    </div>
+                    @if (@b.Status == "Returned" || @b.Status == "Completed")
+                    {
+                        <div class="card-footer">
+                            <a class="float-right" asp-action="AddReview" asp-route-bookingId="@b.BookingId" asp-route-vehicleId="@b.VehicleId">
+                                Review
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+
